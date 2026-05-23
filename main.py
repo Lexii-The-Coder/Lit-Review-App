@@ -253,13 +253,6 @@ def cluster_authors(authors):
 
     return {variant: canonical for _, canonical, variants in clusters for variant in variants}
 
-all_authors_flat = sorted(set(
-    author.strip()
-    for entry in df['authors']
-    for author in (entry if isinstance(entry, list) else [entry])
-))
-
-
 
 # MAIN CONTENT
 st.title("📚 Literature Review Dashboard")
@@ -373,6 +366,12 @@ with tab2:
 
 # TAB 3: Paper Library
 with tab3:
+    all_authors_flat = sorted(set(
+    author.strip()
+    for entry in df['authors']
+    for author in (entry if isinstance(entry, list) else [entry])))
+    author_map = cluster_authors(all_authors_flat)
+    canonical_authors = sorted(set(author_map.values()))
     if not st.session_state.papers:
         st.info("No papers in library yet. Add papers in the 'Add Paper' tab.")
     else:
