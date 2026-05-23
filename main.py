@@ -379,7 +379,7 @@ with tab3:
         st.header("Paper Library")
         
         df = pd.DataFrame(st.session_state.papers)
-        
+        df = df.reindex(columns=[*df.columns, 'year']).fillna({'year': 0})
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             areas = ['All'] + list(df['research_area'].unique())
@@ -398,7 +398,7 @@ with tab3:
                 "Sort by",
                 ['timestamp', 'relevance_score', 'word_count', 'references','year']
             )
-        
+
         filtered_df = df if selected_area == 'All' else df[df['research_area'] == selected_area]
         filtered_df = filtered_df.sort_values(sort_by, ascending=False, na_position='last')
         if selected_author != 'All':
