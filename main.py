@@ -384,7 +384,9 @@ with tab3:
         author_map = cluster_authors(all_authors_flat)
         canonical_authors = sorted(set(author_map.values()))
 
-        df = df.reindex(columns=[*df.columns, 'year']).fillna({'year': 0})
+        if 'year' not in df.columns:
+            df['year'] = 0
+            
         col1, col2, col3, col4 = st.columns(4)
         with col1:
             areas = ['All'] + list(df['research_area'].unique())
