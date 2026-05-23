@@ -9,7 +9,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
 import json
-import re
 from openai import OpenAI
 from difflib import SequenceMatcher
 from pyvis.network import Network
