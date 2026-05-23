@@ -336,7 +336,7 @@ with tab2:
                 labels={'x': 'Research Area', 'y': 'Number of Papers'},
                 title='Papers by Research Area'
             )
-            st.plotly_chart(fig1, use_container_width=True)
+            st.plotly_chart(fig1, width=True)
         
         with col2:
             fig2 = px.histogram(
@@ -346,7 +346,7 @@ with tab2:
                 labels={'relevance_score': 'Relevance Score'},
                 title='Relevance Score Distribution'
             )
-            st.plotly_chart(fig2, use_container_width=True)
+            st.plotly_chart(fig2, width=True)
         
         col1, col2 = st.columns(2)
         
@@ -356,7 +356,7 @@ with tab2:
                 y='word_count',
                 title='Word Count Distribution'
             )
-            st.plotly_chart(fig3, use_container_width=True)
+            st.plotly_chart(fig3, width=True)
         
         with col2:
             fig4 = px.scatter(
@@ -368,7 +368,7 @@ with tab2:
                 labels={'references': 'Number of References', 'relevance_score': 'Relevance Score'},
                 title='References vs Relevance'
             )
-            st.plotly_chart(fig4, use_container_width=True)
+            st.plotly_chart(fig4, width=True)
 
 # TAB 3: Paper Library
 with tab3:
