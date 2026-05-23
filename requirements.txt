@@ -1,8 +1,3 @@
 streamlit
 pandas
 plotly
-openai
-difflib
-pyvis.network
-networkx
-streamlit.components.v1
