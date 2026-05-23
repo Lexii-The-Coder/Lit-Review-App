@@ -31,7 +31,7 @@ if 'papers' not in st.session_state:
 if 'custom_prompt' not in st.session_state:
     # Default customizable prompt template
     st.session_state.custom_prompt = """Analyze this research paper and provide:
-1. Research Type (choose one from: 'Dissertation', 'Study', 'Policy Paper', 'Review', 'Technical Report', 'Conference Paper', 'Other')
+1. Research Type (choose one from: 'Dissertation', 'Study', 'Policy Paper', 'Review', 'Technical Report', 'Conference Paper','Proposal' , 'Other')
 2. Author(s)
 3. Title
 4. Overview/Top Level Summary (one paragraph, about five sentences)
