@@ -1,8 +1,6 @@
 streamlit
 pandas
 plotly
-datetime
-json
 re
 openai
 difflib
