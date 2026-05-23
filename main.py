@@ -286,7 +286,7 @@ with tab1:
                     st.success("✅ Paper processed successfully!")
                     st.rerun()
             except Exception as e:
-                st.error(f"Failed to process paper. Check error messages above.")
+                st.error(f"Failed: {e}")
 
 # TAB 2: Overview
 with tab2:
