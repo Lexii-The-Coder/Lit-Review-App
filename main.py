@@ -290,6 +290,10 @@ with tab1:
 
 # TAB 2: Overview
 with tab2:
+    all_authors_flat = sorted(set(
+    author.strip()
+    for entry in df['authors']
+    for author in (entry if isinstance(entry, list) else [entry])))
     author_map = cluster_authors(all_authors_flat) 
     canonical_authors = sorted(set(author_map.values()))
     # In-Between Functions
