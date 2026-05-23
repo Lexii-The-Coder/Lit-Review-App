@@ -400,7 +400,7 @@ with tab3:
             )
         
         filtered_df = df if selected_area == 'All' else df[df['research_area'] == selected_area]
-        filtered_df = filtered_df.sort_values(sort_by, ascending=False)
+        filtered_df = filtered_df.sort_values(sort_by, ascending=False, na_position='last')
         if selected_author != 'All':
             filtered_df = filtered_df[filtered_df['authors'].apply(
                 lambda a: selected_author in [
