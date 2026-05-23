@@ -222,13 +222,6 @@ with st.sidebar:
         st.rerun()
 
 
-# In-Between Functions
-all_authors = sorted(set(
-    author.strip()
-    for entry in df['authors']
-    for author in (entry if isinstance(entry, list) else [entry])
-))
-
 def get_author_key(name):
     """Pull out (first_initial, last_name) as the matching fingerprint"""
     parts = name.strip().split()
@@ -266,8 +259,7 @@ all_authors_flat = sorted(set(
     for author in (entry if isinstance(entry, list) else [entry])
 ))
 
-author_map = cluster_authors(all_authors_flat)  # "S. Pooplex" -> "Scotty D. Pooplex"
-canonical_authors = sorted(set(author_map.values()))
+
 
 # MAIN CONTENT
 st.title("📚 Literature Review Dashboard")
@@ -305,6 +297,15 @@ with tab1:
 
 # TAB 2: Overview
 with tab2:
+    author_map = cluster_authors(all_authors_flat) 
+    canonical_authors = sorted(set(author_map.values()))
+    # In-Between Functions
+    all_authors = sorted(set(
+        author.strip()
+        for entry in df['authors']
+        for author in (entry if isinstance(entry, list) else [entry])
+    ))
+
     if not st.session_state.papers:
         st.info("No papers processed yet. Add a paper in the 'Add Paper' tab.")
     else:
@@ -395,7 +396,7 @@ with tab3:
         with col4:
             sort_by = st.selectbox(
                 "Sort by",
-                ['timestamp', 'relevance_score', 'word_count', 'references']
+                ['timestamp', 'relevance_score', 'word_count', 'references','year']
             )
         
         filtered_df = df if selected_area == 'All' else df[df['research_area'] == selected_area]
