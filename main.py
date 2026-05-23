@@ -290,12 +290,7 @@ with tab1:
 
 # TAB 2: Overview
 with tab2:
-    all_authors_flat = sorted(set(
-    author.strip()
-    for entry in df['authors']
-    for author in (entry if isinstance(entry, list) else [entry])))
-    author_map = cluster_authors(all_authors_flat) 
-    canonical_authors = sorted(set(author_map.values()))
+    
     # In-Between Functions
     all_authors = sorted(set(
         author.strip()
@@ -307,7 +302,11 @@ with tab2:
         st.info("No papers processed yet. Add a paper in the 'Add Paper' tab.")
     else:
         df = pd.DataFrame(st.session_state.papers)
-        
+        all_authors_flat = sorted(set(author.strip()
+        for entry in df['authors']
+        for author in (entry if isinstance(entry, list) else [entry])))
+        author_map = cluster_authors(all_authors_flat) 
+        canonical_authors = sorted(set(author_map.values()))
         # Metrics row
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:
